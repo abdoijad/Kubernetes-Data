@@ -1,0 +1,26 @@
+Sure, here are the steps to install Minikube on Amazon Linux 2 as the root user:
+
+step 1: Install Docker:
+yum install -y docker
+systemctl start docker
+systemctl enable docker
+
+step 2: Install kubectl:
+
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+mv kubectl /usr/local/bin/
+
+
+step 3: Install Minikube:
+
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+install minikube-linux-amd64 /usr/local/bin/minikube
+
+
+minikube start --driver=docker --privileged=true
+
+kubectl get nodes
+
+
+minikube start --driver=docker --force
